@@ -65,28 +65,47 @@ function Header() {
   );
 }
 
+//it can be used && operator like {numPizzas > 0 && (ul... but for giving message in case of pizza absense it is better to use ternary operator.
+
 function Menu() {
+  const pizzas = pizzaData;
+  const numPizzas = pizzas.length;
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      <ul className="pizzas">
-        {pizzaData.map((pizza) => (
-          <Pizza pizzaObj={pizza} />
-        ))}
-      </ul>
+
+      {numPizzas > 0 ? (
+        <>
+          <p>
+            Lorem ipsum dolor sit amet, magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo consequat.
+          </p>
+          <ul className="pizzas">
+            {pizzas.map((pizza) => (
+              <Pizza pizzaObj={pizza} key={pizza.name} />
+            ))}
+          </ul>
+        </>
+      ) : (
+        <p>We are stil working on our Menu.</p>
+      )}
     </main>
   );
 }
 
-function Pizza(props) {
-  console.log(props);
+function Pizza({ pizzaObj }) {
+  console.log();
+
+  //if (.pizzaObj.soldOut) return null;
+
   return (
-    <li className="pizza">
-      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
+    <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
+      <img src={pizzaObj.photoName} alt={pizzaObj.name} />
       <div>
-        <h3>{props.pizzaObj.name}</h3>
-        <p>{props.pizzaObj.ingredients}</p>
-        <span>{props.pizzaObj.price}</span>
+        <h3>{pizzaObj.name}</h3>
+        <p>{pizzaObj.ingredients}</p>
+        <span>{pizzaObj.soldOut ? "SOLD OUT" : pizzaObj.price}</span>
       </div>
     </li>
   );
@@ -94,8 +113,28 @@ function Pizza(props) {
 
 function Footer() {
   const hour = new Date().getHours();
+  const openHour = 12;
+  const closeHour = 22;
+  const isOpen = hour >= openHour && hour <= closeHour;
 
-  return <footer className="footer">{hour} We are currently Open!</footer>;
+  return (
+    <footer className="footer">
+      <div className="order">
+        {isOpen ? (
+          <p>
+            We are open until {closeHour}:00. Come visit us or order online!
+          </p>
+        ) : (
+          <p>
+            We are happy to welcome you between {openHour}:00 and {closeHour}
+            :00.
+          </p>
+        )}
+
+        <button className="btn">Order</button>
+      </div>
+    </footer>
+  );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
