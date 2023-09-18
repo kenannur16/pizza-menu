@@ -1,4 +1,8 @@
+import { useState } from "react";
+import ingData from "./ingData.json";
+
 export default function OrderModal({ order, modalOpen }) {
+  const [click, setClick] = useState(false);
   return (
     <div className={modalOpen ? "modal-overlay" : "hidden"}>
       <div className="modal-content">
@@ -6,42 +10,42 @@ export default function OrderModal({ order, modalOpen }) {
           <img src={order.photoName} alt={order.name} />
         </div>
 
-        <div className="setting">
-          <span className="order-header">{order.name}</span>
-          <span className="ingredients">
-            {order.setIng &&
-              order.setIng.map((ing) => (
-                <button className="btnIng">{ing}</button>
-              ))}
-          </span>
+        <span className="order-header">{order.name}</span>
 
-          <div className="select-container">
-            <select
-              className="select-box"
-              placeholder="select extra ingredients..."
-            >
-              <option className="option" value="">
-                select extra ingredients...
-              </option>
-              <option className="option">tomato</option>
-              <option className="option">cheese</option>
-              <option className="option">orange</option>
-            </select>
-            <select className="select-box" placeholder="select pizza size...">
-              <option className="option">select size...</option>
-              <option className="option">small</option>
-              <option className="option">medium</option>
-              <option className="option">xLarge</option>
-            </select>
-          </div>
+        <span className="ing-box">
+          {order.setIng &&
+            order.setIng.map((ing) => (
+              <button className="btnIng">{ing}</button>
+            ))}
+        </span>
+
+        <button
+          className="btn-select-box"
+          onClick={() => (click ? setClick(false) : setClick(true))}
+        >
+          Select Extra Ingredients
+        </button>
+        <div className={click ? "extra-Ing" : "hidden"}>
+          {ingData.map((ing) => (
+            <div>
+              <input type="checkbox" name={ing.id} value={ing.name} />
+              <label for={ing.name}>{ing.name}</label>
+              <span>{ing.price} $</span>
+            </div>
+          ))}
         </div>
 
-        <div className="price-order">
-          <span className="order-header">12.45 $</span>
-          <div className="btn-container">
-            <button className="btnSetting">Order</button>
-            <button className="btnSetting">Add to CART</button>
-          </div>
+        <select className="btn-select-box" placeholder="select pizza size...">
+          <option className="option">select size...</option>
+          <option className="option">small</option>
+          <option className="option">medium</option>
+          <option className="option">xLarge</option>
+        </select>
+
+        <span className="order-header">12.45 $</span>
+        <div className="btn-container">
+          <button className="btnSetting">Order Now!</button>
+          <button className="btnSetting">Add to CART</button>
         </div>
       </div>
     </div>

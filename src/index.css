@@ -210,50 +210,49 @@ body {
 .modal-content {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   background-color: #fff; /* Background color for the modal */
   padding: 5px;
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Box shadow for a slight elevation effect */
-  width: 20%;
-  height: 35rem; /* Adjust the maximum width as needed */
+  width: 70%;
+  height: auto; /* Adjust the maximum width as needed */
   z-index: 1001; /* Ensure the modal content appears on top of the overlay */
 }
 
 @media only screen and (min-width: 600px) {
   .modal-content {
-    width: 80%;
+    width: 40%;
   }
 }
 
 @media only screen and (min-width: 800px) {
   .modal-content {
-    width: 55%;
+    width: 35%;
   }
 }
 
 @media only screen and (min-width: 1200px) {
   .modal-content {
-    width: 50%;
+    width: 30%;
   }
 }
 
 @media only screen and (min-width: 1600px) {
   .modal-content {
-    width: 40%;
+    width: 25%;
   }
 }
 
 @media only screen and (min-width: 1900px) {
   .modal-content {
-    width: 35%;
+    width: 20%;
   }
 }
 
 @media only screen and (min-width: 2000px) {
   .modal-content {
-    width: 25%;
+    width: 20%;
   }
 }
 
@@ -266,13 +265,16 @@ body {
 }
 
 .img-box {
-  width: 50%;
+  width: 100%;
   height: 75%;
   padding: 1rem;
   overflow: hidden;
 }
 
-.ingredients {
+.ing-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin-bottom: 1rem;
 }
 
@@ -287,18 +289,6 @@ body {
 
 .select-container {
   margin-bottom: 0.5rem;
-}
-
-.select-box {
-  border: none;
-  border-radius: 1rem;
-  appearance: none;
-  padding: 0 30px 0 15px;
-  margin-bottom: 1rem;
-  width: 80%;
-  height: 4rem;
-  font-size: 1.5rem;
-  background-color: #f5f5f5;
 }
 
 .option {
@@ -343,6 +333,7 @@ body {
 
 .btn-container {
   display: flex;
+  margin-bottom: 2rem;
 }
 
 .btnSetting {
@@ -352,8 +343,38 @@ body {
   background-color: #edc84b;
   margin-right: 1.5rem;
   border: none;
-  width: 50%;
+  width: auto;
   height: 4rem;
+  cursor: pointer;
+}
+
+.btnSetting:hover {
+  background-color: #e9bb24;
+}
+
+.btn-select-box {
+  border: none;
+  border-radius: 1rem;
+  appearance: none;
+  padding: 0 30px 0 15px;
+  margin-bottom: 1rem;
+  width: 80%;
+  height: 4rem;
+  font-size: 1.5rem;
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.btn-select-box:hover {
+  background-color: #e9e7e7;
+}
+
+.hidden {
+  display: none;
+}
+
+.extra-Ing {
+  display: flex;
 }
 /*
 SPACING SYSTEM (px)

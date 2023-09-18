@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Tomato",
+    "price": 0.5
+  },
+  {
+    "id": 2,
+    "name": "Mozarella",
+    "price": 2.5
+  },
+  {
+    "id": 3,
+    "name": "Pepperoni",
+    "price": 0.6
+  },
+  {
+    "id": 4,
+    "name": "Mushroom",
+    "price": 0.8
+  },
+  {
+    "id": 5,
+    "name": "Ham",
+    "price": 0.8
+  },
+  {
+    "id": 6,
+    "name": "Aragula",
+    "price": 0.5
+  },
+  {
+    "id": 7,
+    "name": "Rosemary",
+    "price": 0.3
+  },
+  {
+    "id": 8,
+    "name": "Onion",
+    "price": 0.3
+  },
+  {
+    "id": 9,
+    "name": "Spinach",
+    "price": 0.4
+  },
+  {
+    "id": 10,
+    "name": "Ricotta Cheese",
+    "price": 1.5
+  },
+  {
+    "id": 11,
+    "name": "Burrata Cheese",
+    "price": 2.5
+  },
+  {
+    "id": 12,
+    "name": "Tuna",
+    "price": 2.0
+  }
+]

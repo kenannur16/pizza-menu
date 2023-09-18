@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Dropdown with Multiple Selection</title>
+    <style>
+      /* Styling for the custom dropdown container */
+      .custom-dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      /* Styling for the button to open the dropdown */
+      .custom-dropdown-button {
+        background-color: #3498db;
+        color: #fff;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+
+      /* Styling for the dropdown content */
+      .custom-dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+
+      /* Styling for the checkboxes */
+      .custom-checkbox-label {
+        display: block;
+        padding: 8px 16px;
+      }
+
+      /* Toggle dropdown content when the button is clicked */
+      .custom-dropdown.active .custom-dropdown-content {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="custom-dropdown">
+      <button class="custom-dropdown-button" onclick="toggleDropdown()">
+        Select Options
+      </button>
+      <div class="custom-dropdown-content" id="dropdown-content">
+        <label class="custom-checkbox-label">
+          <input type="checkbox" name="option" value="option1" /> Option 1
+        </label>
+        <label class="custom-checkbox-label">
+          <input type="checkbox" name="option" value="option2" /> Option 2
+        </label>
+        <label class="custom-checkbox-label">
+          <input type="checkbox" name="option" value="option3" /> Option 3
+        </label>
+      </div>
+    </div>
+
+    <script>
+      function toggleDropdown() {
+        var dropdown = document.querySelector(".custom-dropdown");
+        dropdown.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>
