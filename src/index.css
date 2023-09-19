@@ -271,31 +271,6 @@ body {
   overflow: hidden;
 }
 
-.ing-box {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
-
-.setting {
-  width: 50%;
-  height: 90%;
-  padding: 0.5rem;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-}
-
-.select-container {
-  margin-bottom: 0.5rem;
-}
-
-.option {
-  padding: 1rem;
-  border: none;
-}
-
 .img-box img {
   width: 100%;
   height: 100%;
@@ -312,10 +287,28 @@ body {
   font-weight: 600;
   border: none;
   border-radius: 1rem;
+  background-color: #e02130;
+  color: white;
+  padding: 1rem;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+
+.btnIngBefore {
+  font-weight: 600;
+  border: none;
+  border-radius: 1rem;
   color: #888;
   padding: 1rem;
   margin: 0.5rem;
   cursor: pointer;
+}
+
+.ing-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
 
 .btnIng:hover {
@@ -337,10 +330,11 @@ body {
 }
 
 .btnSetting {
+  color: white;
   justify-content: center;
   font-size: 1.5rem;
   padding: 1rem;
-  background-color: #edc84b;
+  background-color: #429867;
   margin-right: 1.5rem;
   border: none;
   width: auto;
@@ -361,8 +355,17 @@ body {
   width: 80%;
   height: 4rem;
   font-size: 1.5rem;
-  background-color: #f5f5f5;
+  background-color: #fab243;
   cursor: pointer;
+}
+
+.size-box {
+  margin: 1rem;
+  font-size: medium;
+  align-items: center;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .btn-select-box:hover {
@@ -374,7 +377,8 @@ body {
 }
 
 .extra-Ing {
-  display: flex;
+  display: relative;
+  z-index: 1002;
 }
 /*
 SPACING SYSTEM (px)
