@@ -1,56 +1,62 @@
 [
   {
     "name": "Focaccia",
-    "ingredients": "Bread with italian olive oil and rosemary",
+    "size": "",
+    "quantity": 1,
     "setIng": ["Tomato", "Mozarella", "Rosemary"],
     "extraIng": [],
     "price": 6.2,
     "photoName": "pizzas/focaccia.jpg",
-    "soldOut": false
+    "isOrder": false
   },
   {
     "name": "Pizza Margherita",
-    "ingredients": "Tomato and mozarella",
+    "size": "",
+    "quantity": 1,
     "setIng": ["Tomato", "Mozarella"],
     "extraIng": [],
     "price": 10.5,
     "photoName": "pizzas/margherita.jpg",
-    "soldOut": false
+    "isOrder": false
   },
   {
     "name": "Pizza Spinaci",
-    "ingredients": "Tomato, mozarella, spinach, and ricotta cheese",
+    "size": "",
+    "quantity": 1,
     "setIng": ["Tomato", "Mozarella", "Spinach", "Ricotta Cheese"],
     "extraIng": [],
     "price": 12.6,
     "photoName": "pizzas/spinaci.jpg",
-    "soldOut": false
+    "isOrder": false
   },
   {
     "name": "Pizza Funghi",
-    "ingredients": "Tomato, mozarella, mushrooms, and onion",
+    "size": "",
+    "quantity": 1,
     "setIng": ["Tomato", "Mozarella", "Mushroom", "Onion"],
     "extraIng": [],
     "price": 12.2,
     "photoName": "pizzas/funghi.jpg",
-    "soldOut": false
+    "isOrder": false
   },
   {
     "name": "Pizza Salamino",
-    "ingredients": "Tomato, mozarella, and pepperoni",
+    "size": "",
+    "quantity": 1,
     "setIng": ["Tomato", "Mozarella", "Pepperoni"],
     "extraIng": [],
     "price": 15.8,
     "photoName": "pizzas/salamino.jpg",
-    "soldOut": false
+    "isOrder": false
   },
   {
     "name": "Pizza Prosciutto",
-    "ingredients": "Tomato, mozarella, ham, aragula, and burrata cheese",
+    "size": "",
+    "quantity": 1,
     "setIng": ["Tomato", "Mozarella", "Ham", "Aragula", "Burrata Cheese"],
     "extraIng": [],
     "price": 18.5,
     "photoName": "pizzas/prosciutto.jpg",
-    "soldOut": false
+    "isOrder": false
   }
 ]

@@ -1,18 +1,10 @@
 import { useState } from "react";
 import ingData from "./ingData.json";
-import pizzaData from "./pizzaData.json";
 
 export default function OrderModal({ order, modalOpen }) {
   const [click, setClick] = useState(false);
-  const [isSelect, setIsSelect] = useState(true);
+  const [isSelect, setIsSelect] = useState(false);
 
-  const addToExtra = function (ing) {
-    if (isSelect) {
-      if (!pizzaData.setIng.includes(ing)) pizzaData.setIng.push(ing);
-    } else {
-      pizzaData.setIng.filter((item) => item !== ing);
-    }
-  };
   return (
     <div className={modalOpen ? "modal-overlay" : "hidden"}>
       <div className="modal-content">
@@ -29,30 +21,35 @@ export default function OrderModal({ order, modalOpen }) {
             ))}
         </span>
 
+        {/*select extra ingredients*/}
         <button
           className="btn-select-box"
           onClick={() => (click ? setClick(false) : setClick(true))}
         >
           Select Extra Ingredients
         </button>
+
         <div className={click ? "ing-box" : "hidden"}>
-          {ingData.map((ing) => (
-            <button
-              onClick={(ing) => {
-                isSelect ? setIsSelect(false) : setIsSelect(true);
-                addToExtra(ing.name);
-              }}
-              className={isSelect ? "btnIngBefore" : "hidden"}
-            >
-              {ing.name} {ing.price} $
-            </button>
-          ))}
+          {ingData.map((ing) => order.setIng &&
+            !order.setIng.includes(ing.name) ? (
+              <button
+                className={
+                  isSelect ? `${"btnIngSelected"}` : `${"btnIngBefore"}`
+                }
+                onClick={() =>
+                  isSelect ? setIsSelect(false) : setIsSelect(true)
+                }
+              >
+                {ing.name} {ing.price} $
+              </button>
+            ) : null
+          )}
         </div>
 
+        {/* <button className="btn-select-box">select pizza size</button> */}
         <h1>pizza size</h1>
         <hr />
 
-        {/* <button className="btn-select-box">select pizza size</button> */}
         <div className="size-box">
           <label class="custom-checkbox-label">
             <input type="radio" name="option" value="option1" /> Small
@@ -66,6 +63,8 @@ export default function OrderModal({ order, modalOpen }) {
         </div>
 
         <span className="order-header">12.45 $</span>
+
+        {/*BUTTONS*/}
         <div className="btn-container">
           <button className="btnSetting">Order Now!</button>
           <button className="btnSetting">Add to CART</button>

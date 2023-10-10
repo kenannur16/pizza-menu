@@ -1,4 +1,4 @@
-export default function Footer() {
+export default function Footer({ openCart }) {
   const hour = new Date().getHours();
   const openHour = 12;
   const closeHour = 22;
@@ -18,7 +18,9 @@ export default function Footer() {
           </p>
         )}
 
-        <button className="btn">CART</button>
+        <button onClick={(e) => openCart(e)} className="btn">
+          CART
+        </button>
       </div>
     </footer>
   );

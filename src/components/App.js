@@ -2,11 +2,29 @@ import Header from "./Header";
 import Menu from "./Menu";
 import Footer from "./Footer";
 import OrderModal from "./OrderModal";
+import Cart from "./Cart";
 import { useState, useEffect } from "react";
 
 export default function App() {
-  const [order, setOrder] = useState({});
   const [modalOpen, setModalOpen] = useState(false);
+  const [cartModalOpen, setCartModalOpen] = useState(false);
+  const [order, setOrder] = useState({});
+  const [ingredients, setIngredients] = useState([]);
+  const [size, setSize] = useState(null);
+  const [quantity, setQuantity] = useState(1);
+
+  function getQuantity(quantity) {
+    setQuantity(quantity);
+  }
+
+  function getSize(size) {
+    setSize(size);
+  }
+
+  function getIng(ing) {
+    setIngredients(ing);
+  }
+
   function getOrder(product) {
     setOrder(product);
   }
@@ -17,6 +35,14 @@ export default function App() {
 
   function closeModal() {
     setModalOpen(false);
+  }
+
+  function openCart(e) {
+    setCartModalOpen(true);
+  }
+
+  function closeCart() {
+    setCartModalOpen(false);
   }
 
   useEffect(() => {
@@ -46,12 +72,45 @@ export default function App() {
     };
   }, [modalOpen]);
 
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (cartModalOpen && e.target.classList.contains("modal-overlay")) {
+        closeCart();
+      }
+    };
+
+    const handleEscKey = (e) => {
+      if (cartModalOpen && e.key === "Escape") {
+        closeCart();
+      }
+    };
+
+    if (cartModalOpen) {
+      document.addEventListener("mousedown", handleOutsideClick);
+      document.addEventListener("keydown", handleEscKey);
+    } else {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("keydown", handleEscKey);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("keydown", handleEscKey);
+    };
+  }, [cartModalOpen]);
+
   return (
     <div className="container">
       <Header />
       <Menu getOrder={getOrder} openModal={openModal} />
-      <Footer />
+      <Footer openCart={openCart} />
       <OrderModal order={order} modalOpen={modalOpen} />
+      <Cart
+        size={size}
+        quantity={quantity}
+        ingredients={ingredients}
+        cartModalOpen={cartModalOpen}
+      />
     </div>
   );
 }
