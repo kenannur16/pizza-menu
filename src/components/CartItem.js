@@ -1,3 +1,7 @@
-export default function CartItem() {
-  return <div>Cart Item</div>;
+export default function CartItem({ item }) {
+  return (
+    <div>
+      {item.name} {item.size}
+    </div>
+  );
 }

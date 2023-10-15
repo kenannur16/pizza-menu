@@ -1,9 +1,49 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ingData from "./ingData.json";
 
-export default function OrderModal({ order, modalOpen }) {
+export default function OrderModal({ order, modalOpen, addToCart }) {
   const [click, setClick] = useState(false);
-  const [isSelect, setIsSelect] = useState(false);
+  const [isSelect, setIsSelect] = useState([]);
+  const [selectedSize, setSelectedSize] = useState("");
+
+  const resetSettings = () => {
+    setIsSelect([]);
+    setSelectedSize("");
+  };
+
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (modalOpen && e.target.classList.contains("modal-overlay")) {
+        resetSettings();
+      }
+    };
+
+    const handleEscKey = (e) => {
+      if (modalOpen && e.key === "Escape") {
+        resetSettings();
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("keydown", handleEscKey);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("keydown", handleEscKey);
+    };
+  }, [modalOpen]);
+
+  const handleButtonClick = (id, name, price) => {
+    if (isSelect.some((button) => button.id === id)) {
+      const updatedButtons = isSelect.filter((button) => button.id !== id);
+      setIsSelect(updatedButtons);
+    } else {
+      setIsSelect([...isSelect, { id, name, price }]);
+    }
+  };
+
+  const handleSizeChange = (event) => {
+    setSelectedSize(event.target.value);
+  };
 
   return (
     <div className={modalOpen ? "modal-overlay" : "hidden"}>
@@ -30,15 +70,16 @@ export default function OrderModal({ order, modalOpen }) {
         </button>
 
         <div className={click ? "ing-box" : "hidden"}>
-          {ingData.map((ing) => order.setIng &&
-            !order.setIng.includes(ing.name) ? (
+          {ingData.map((ing) =>
+            order.setIng && !order.setIng.includes(ing.name) ? (
               <button
+                key={ing.id}
                 className={
-                  isSelect ? `${"btnIngSelected"}` : `${"btnIngBefore"}`
+                  isSelect.some((button) => button.id === ing.id)
+                    ? `${"btnIngSelected"}`
+                    : `${"btnIngBefore"}`
                 }
-                onClick={() =>
-                  isSelect ? setIsSelect(false) : setIsSelect(true)
-                }
+                onClick={() => handleButtonClick(ing.id, ing.name, ing.price)}
               >
                 {ing.name} {ing.price} $
               </button>
@@ -52,13 +93,34 @@ export default function OrderModal({ order, modalOpen }) {
 
         <div className="size-box">
           <label class="custom-checkbox-label">
-            <input type="radio" name="option" value="option1" /> Small
+            <input
+              type="radio"
+              name="option"
+              value="small"
+              checked={selectedSize === "small"}
+              onChange={handleSizeChange}
+            />{" "}
+            Small
           </label>
           <label class="custom-checkbox-label">
-            <input type="radio" name="option" value="option1" /> Medium
+            <input
+              type="radio"
+              name="option"
+              value="medium"
+              checked={selectedSize === "medium"}
+              onChange={handleSizeChange}
+            />{" "}
+            Medium
           </label>
           <label class="custom-checkbox-label">
-            <input type="radio" name="option" value="option1" /> Large
+            <input
+              type="radio"
+              name="option"
+              value="large"
+              checked={selectedSize === "large"}
+              onChange={handleSizeChange}
+            />{" "}
+            Large
           </label>
         </div>
 
@@ -67,7 +129,9 @@ export default function OrderModal({ order, modalOpen }) {
         {/*BUTTONS*/}
         <div className="btn-container">
           <button className="btnSetting">Order Now!</button>
-          <button className="btnSetting">Add to CART</button>
+          <button className="btnSetting" onClick={(e) => addToCart(isSelect)}>
+            Add to CART
+          </button>
         </div>
       </div>
     </div>

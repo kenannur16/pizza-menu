@@ -9,21 +9,11 @@ export default function App() {
   const [modalOpen, setModalOpen] = useState(false);
   const [cartModalOpen, setCartModalOpen] = useState(false);
   const [order, setOrder] = useState({});
-  const [ingredients, setIngredients] = useState([]);
-  const [size, setSize] = useState(null);
-  const [quantity, setQuantity] = useState(1);
+  const [cartItems, setCartItems] = useState([]);
 
-  function getQuantity(quantity) {
-    setQuantity(quantity);
-  }
-
-  function getSize(size) {
-    setSize(size);
-  }
-
-  function getIng(ing) {
-    setIngredients(ing);
-  }
+  const addToCart = (newItem) => {
+    setCartItems([...cartItems, newItem]);
+  };
 
   function getOrder(product) {
     setOrder(product);
@@ -104,13 +94,8 @@ export default function App() {
       <Header />
       <Menu getOrder={getOrder} openModal={openModal} />
       <Footer openCart={openCart} />
-      <OrderModal order={order} modalOpen={modalOpen} />
-      <Cart
-        size={size}
-        quantity={quantity}
-        ingredients={ingredients}
-        cartModalOpen={cartModalOpen}
-      />
+      <OrderModal order={order} modalOpen={modalOpen} addToCart={addToCart} />
+      <Cart cartModalOpen={cartModalOpen} cartItems={cartItems} />
     </div>
   );
 }
