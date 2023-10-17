@@ -67,7 +67,7 @@ export default function Menu({ getOrder, openModal }) {
               <Pizza
                 pizzaObj={pizza}
                 getOrder={getOrder}
-                key={pizza.name}
+                key={pizza.pizzaName}
                 openModal={openModal}
               />
             ))}

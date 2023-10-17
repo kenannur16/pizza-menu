@@ -1,7 +1,11 @@
 export default function CartItem({ item }) {
   return (
     <div>
-      {item.name} {item.size}
+      {item.map((pizza) => (
+        <h3>
+          {pizza.pizzaName} {pizza.size}
+        </h3>
+      ))}
     </div>
   );
 }

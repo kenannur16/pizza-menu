@@ -11,8 +11,10 @@ export default function App() {
   const [order, setOrder] = useState({});
   const [cartItems, setCartItems] = useState([]);
 
-  const addToCart = (newItem) => {
-    setCartItems([...cartItems, newItem]);
+  const addToCart = (extraIng, size, pizza) => {
+    pizza.extra = extraIng;
+    pizza.size = size;
+    setCartItems([...cartItems, pizza]);
   };
 
   function getOrder(product) {

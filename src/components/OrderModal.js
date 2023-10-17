@@ -129,7 +129,10 @@ export default function OrderModal({ order, modalOpen, addToCart }) {
         {/*BUTTONS*/}
         <div className="btn-container">
           <button className="btnSetting">Order Now!</button>
-          <button className="btnSetting" onClick={(e) => addToCart(isSelect)}>
+          <button
+            className="btnSetting"
+            onClick={(e) => addToCart(isSelect, selectedSize, order)}
+          >
             Add to CART
           </button>
         </div>
