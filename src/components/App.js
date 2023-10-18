@@ -12,9 +12,28 @@ export default function App() {
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (extraIng, size, pizza) => {
-    pizza.extra = extraIng;
-    pizza.size = size;
-    setCartItems([...cartItems, pizza]);
+    let cost = 0;
+    if (size !== "small") {
+      if (size === "medium") {
+        cost += 3;
+      } else if (size === "large") {
+        cost += 6;
+      }
+    }
+
+    for (let i = 0; i < extraIng.size; i++) {
+      cost += extraIng[i].price;
+    }
+
+    const pizzaInCart = {
+      pizzaName: pizza.pizzaName,
+      pizzaIng: pizza.setIng.concat(extraIng),
+      pizzaSize: size,
+      pizzaPrice: pizza.price + cost,
+      pizzaImg: pizza.photoName,
+    };
+
+    setCartItems([...cartItems, pizzaInCart]);
   };
 
   function getOrder(product) {

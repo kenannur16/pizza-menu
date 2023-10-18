@@ -1,11 +1,15 @@
-export default function CartItem({ item }) {
+export default function CartItem({ cartItem }) {
   return (
-    <div>
-      {item.map((pizza) => (
-        <h3>
-          {pizza.pizzaName} {pizza.size}
-        </h3>
-      ))}
-    </div>
+    <li className="pizza">
+      <img src={cartItem.pizzaImg} alt={cartItem.pizzaName} />
+      <div>
+        <h3>{cartItem.pizzaName}</h3>
+        <p>{cartItem.pizzaIng}</p>
+        <span>
+          {cartItem.pizzaPrice}
+          <button className="btnAdd">Delete</button>
+        </span>
+      </div>
+    </li>
   );
 }

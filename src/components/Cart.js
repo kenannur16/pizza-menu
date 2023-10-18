@@ -4,12 +4,11 @@ export default function Cart({ cartModalOpen, cartItems }) {
   return (
     <div className={cartModalOpen ? "modal-overlay" : "hidden"}>
       <div className="cartModal-content">
-        <h2>Your CART</h2>
-        {cartItems.map((item) => (
-          <CartItem item={item} />
-        ))}
-
-        <h2>Total: 25.4 $</h2>
+        {cartItems.length ? (
+          cartItems.map((item) => <CartItem cartItem={item} />)
+        ) : (
+          <h2>Your cart is empty</h2>
+        )}
       </div>
     </div>
   );
