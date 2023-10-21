@@ -10,6 +10,7 @@ export default function App() {
   const [cartModalOpen, setCartModalOpen] = useState(false);
   const [order, setOrder] = useState({});
   const [cartItems, setCartItems] = useState([]);
+  const [quantity, setQuantity] = useState(1);
 
   const addToCart = (extraIng, size, pizza) => {
     let cost = 0;
@@ -25,12 +26,15 @@ export default function App() {
       cost += extraIng[i].price;
     }
 
+    const extra = extraIng.map((item) => item.name);
+
     const pizzaInCart = {
       pizzaName: pizza.pizzaName,
-      pizzaIng: pizza.setIng.concat(extraIng),
+      pizzaIng: pizza.setIng.concat(extra),
       pizzaSize: size,
       pizzaPrice: pizza.price + cost,
       pizzaImg: pizza.photoName,
+      pizzaQuantity: quantity,
     };
 
     setCartItems([...cartItems, pizzaInCart]);

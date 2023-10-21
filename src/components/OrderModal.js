@@ -52,7 +52,7 @@ export default function OrderModal({ order, modalOpen, addToCart }) {
           <img src={order.photoName} alt={order.name} />
         </div>
 
-        <span className="order-header">{order.name}</span>
+        <span className="order-header">{order.pizzaName}</span>
 
         <span className="ing-box">
           {order.setIng &&
