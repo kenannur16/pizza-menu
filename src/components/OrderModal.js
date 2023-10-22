@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import ingData from "./ingData.json";
 
-export default function OrderModal({ order, modalOpen, addToCart }) {
+export default function OrderModal({ order, modalOpen, addToCart, openOrder }) {
   const [click, setClick] = useState(false);
   const [isSelect, setIsSelect] = useState([]);
-  const [selectedSize, setSelectedSize] = useState("");
+  const [selectedSize, setSelectedSize] = useState("small");
 
   const resetSettings = () => {
     setIsSelect([]);
@@ -128,7 +128,9 @@ export default function OrderModal({ order, modalOpen, addToCart }) {
 
         {/*BUTTONS*/}
         <div className="btn-container">
-          <button className="btnSetting">Order Now!</button>
+          <button onClick={() => openOrder()} className="btnSetting">
+            Order Now!
+          </button>
           <button
             className="btnSetting"
             onClick={(e) => addToCart(isSelect, selectedSize, order)}

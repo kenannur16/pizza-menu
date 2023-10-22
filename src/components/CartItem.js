@@ -1,8 +1,23 @@
-export default function CartItem({ cartItem }) {
+export default function CartItem({
+  cartItem,
+  handleIncrease,
+  handleDecrease,
+  handleDelete,
+}) {
+  const handleTotalPrice = () => {
+    return cartItem.pizzaPrice * cartItem.pizzaQuantity;
+  };
+
+  const handleDeleteItem = () => {
+    handleDelete(cartItem.pizzaId);
+  };
+
   return (
     <div className="cart-item">
       <div className="cart-quantity">
-        <button className="cart-delete-btn">X</button>
+        <button onClick={handleDeleteItem} className="cart-delete-btn">
+          X
+        </button>
       </div>
       <div className="cart-image">
         <img src={cartItem.pizzaImg} alt={cartItem.pizzaName} />
@@ -11,8 +26,8 @@ export default function CartItem({ cartItem }) {
       <div className="cart-description">
         <span className="cart-description-header">{cartItem.pizzaName}</span>
         <span>
-          {cartItem.pizzaIng.map((ing) => (
-            <p>{ing}</p>
+          {cartItem.pizzaIng.map((ing, index) => (
+            <p key={index}>{ing}</p>
           ))}
         </span>
         <span>
@@ -21,27 +36,31 @@ export default function CartItem({ cartItem }) {
       </div>
 
       <div className="cart-quantity">
-        <button className="plus-btn" type="button" name="button">
-          <img src="plus.svg" alt="" />
+        <button
+          onClick={() => handleDecrease(cartItem.pizzaId)}
+          className="minus-btn"
+          type="button"
+          name="button"
+        >
+          -
         </button>
-        <input type="text" name="name" value="1" />
-        <button className="minus-btn" type="button" name="button">
-          <img src="minus.svg" alt="" />
+        <input
+          type="text"
+          name="name"
+          value={cartItem.pizzaQuantity}
+          readOnly
+        />
+        <button
+          onClick={() => handleIncrease(cartItem.pizzaId)}
+          className="plus-btn"
+          type="button"
+          name="button"
+        >
+          +
         </button>
       </div>
 
-      <div className="total-price">{cartItem.pizzaPrice}$</div>
+      <div className="total-price">{handleTotalPrice()}$</div>
     </div>
   );
 }
-
-/* <img src={cartItem.pizzaImg} alt={cartItem.pizzaName} />
-      <div className="cart-Item">
-        <h3>{cartItem.pizzaName}</h3>
-        <div className="cart-Item-group"></div>
-
-        <span>
-          {cartItem.pizzaPrice}
-          <button className="btnAdd">Delete</button>
-        </span>
-      </div> */

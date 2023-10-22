@@ -1,11 +1,21 @@
 import { useEffect, useState } from "react";
 import CartItem from "./CartItem";
 
-export default function Cart({ cartModalOpen, cartItems }) {
+export default function Cart({
+  cartModalOpen,
+  cartItems,
+  handleIncrease,
+  handleDecrease,
+  handleDelete,
+  openOrder,
+}) {
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
-    const total = cartItems.reduce((acc, item) => acc + item.pizzaPrice, 0);
+    const total = cartItems.reduce(
+      (acc, item) => acc + item.pizzaPrice * item.pizzaQuantity,
+      0
+    );
     setTotalPrice(total);
   }, [cartItems]);
 
@@ -14,13 +24,23 @@ export default function Cart({ cartModalOpen, cartItems }) {
       <div className="cartModal-content">
         <div className="cart-title">YOUR CART</div>
         {cartItems.length ? (
-          cartItems.map((item) => <CartItem cartItem={item} />)
+          cartItems.map((item) => (
+            <CartItem
+              key={item.pizzaId}
+              cartItem={item}
+              handleDecrease={handleDecrease}
+              handleIncrease={handleIncrease}
+              handleDelete={handleDelete}
+            />
+          ))
         ) : (
-          <h2>Your cart is empty</h2>
+          <div className="cart-item-empty">Your cart is empty</div>
         )}
 
         <div className="cart-footer">
-          <button className="btn">ORDER</button>
+          <button onClick={() => openOrder()} className="btn">
+            ORDER
+          </button>
           <span>Total: {totalPrice} $</span>
         </div>
       </div>
