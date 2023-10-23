@@ -13,6 +13,10 @@ export default function App() {
   const [order, setOrder] = useState({});
   const [cartItems, setCartItems] = useState([]);
 
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
   const addToCart = (extraIng, size, pizza) => {
     let cost = 0;
     if (size !== "small") {
@@ -192,6 +196,7 @@ export default function App() {
         handleDecrease={handleDecrease}
         handleDelete={handleDelete}
         openOrder={openOrder}
+        clearCart={clearCart}
       />
       <Order orderModalOpen={orderModalOpen} />
     </div>

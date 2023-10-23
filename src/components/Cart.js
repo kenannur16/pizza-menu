@@ -8,6 +8,7 @@ export default function Cart({
   handleDecrease,
   handleDelete,
   openOrder,
+  clearCart,
 }) {
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -38,7 +39,13 @@ export default function Cart({
         )}
 
         <div className="cart-footer">
-          <button onClick={() => openOrder()} className="btn">
+          <button
+            onClick={() => {
+              openOrder();
+              clearCart();
+            }}
+            className="btn"
+          >
             ORDER
           </button>
           <span>Total: {totalPrice} $</span>
