@@ -5,6 +5,7 @@ export default function OrderModal({ order, modalOpen, addToCart, openOrder }) {
   const [click, setClick] = useState(false);
   const [isSelect, setIsSelect] = useState([]);
   const [selectedSize, setSelectedSize] = useState("small");
+  const [currentPrice, setCurrentPrice] = useState(0);
 
   const resetSettings = () => {
     setIsSelect([]);
@@ -31,6 +32,18 @@ export default function OrderModal({ order, modalOpen, addToCart, openOrder }) {
       document.removeEventListener("keydown", handleEscKey);
     };
   }, [modalOpen]);
+
+  useEffect(() => {
+    const price =
+      order.price + isSelect.reduce((acc, curr) => acc + curr.price, 0);
+    if (selectedSize === "medium") {
+      setCurrentPrice((price + 3).toFixed(2));
+    } else if (selectedSize === "large") {
+      setCurrentPrice((price + 6).toFixed(2));
+    } else {
+      setCurrentPrice(price.toFixed(2));
+    }
+  }, [isSelect, selectedSize, order.price]);
 
   const handleButtonClick = (id, name, price) => {
     if (isSelect.some((button) => button.id === id)) {
@@ -124,7 +137,7 @@ export default function OrderModal({ order, modalOpen, addToCart, openOrder }) {
           </label>
         </div>
 
-        <span className="order-header">12.45 $</span>
+        <span className="order-header">{currentPrice} $</span>
 
         {/*BUTTONS*/}
         <div className="btn-container">

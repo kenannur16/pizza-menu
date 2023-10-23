@@ -60,7 +60,7 @@ export default function CartItem({
         </button>
       </div>
 
-      <div className="total-price">{handleTotalPrice()}$</div>
+      <div className="total-price">{handleTotalPrice().toFixed(2)}$</div>
     </div>
   );
 }

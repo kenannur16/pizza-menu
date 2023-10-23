@@ -16,7 +16,7 @@ export default function Cart({
       (acc, item) => acc + item.pizzaPrice * item.pizzaQuantity,
       0
     );
-    setTotalPrice(total);
+    setTotalPrice(total.toFixed(2));
   }, [cartItems]);
 
   return (

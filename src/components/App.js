@@ -23,9 +23,7 @@ export default function App() {
       }
     }
 
-    for (let i = 0; i < extraIng.size; i++) {
-      cost += extraIng[i].price;
-    }
+    extraIng.map((item) => (cost += item.price));
 
     const extra = extraIng.map((item) => item.name);
 
