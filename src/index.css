@@ -220,6 +220,13 @@ body {
   z-index: 1001; /* Ensure the modal content appears on top of the overlay */
 }
 
+@media only screen and (max-width: 600px) {
+  .pizzas {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 @media only screen and (min-width: 600px) {
   .modal-content {
     width: 40%;
