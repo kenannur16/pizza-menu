@@ -10,10 +10,10 @@ https://downhillspizza.vercel.app/
 
 ## Features
 
-Customizable Pizzas: Users can select from a variety of ingredients, sizes, and quantities to create their desired pizzas.
-Order Placement: Seamless online ordering system for pizzas.
-Desk Menu Capability: Allows customers to place orders directly at the desk, eliminating the need to wait in line.
-User-friendly Interface: Simple and intuitive design for easy navigation and order processing.
+- Customizable Pizzas: Users can select from a variety of ingredients, sizes, and quantities to create their desired pizzas.
+- Order Placement: Seamless online ordering system for pizzas.
+- Desk Menu Capability: Allows customers to place orders directly at the desk, eliminating the need to wait in line.
+- User-friendly Interface: Simple and intuitive design for easy navigation and order processing.
 
 ![image](https://github.com/kenannur16/pizza-menu/assets/48838484/2c3a2c02-d093-46e4-a057-c9f0bc728ab9)
 
@@ -23,17 +23,15 @@ User-friendly Interface: Simple and intuitive design for easy navigation and ord
 
 ## Technologies Used
 
-- \*\* Frontend: HTML, CSS, JavaScript
-- \*\* Framework: React JS
-  Installation
-  To run the Online Pizza Store locally, follow these steps:
+- Frontend: HTML, CSS, JavaScript
+- Framework: React JS
 
 ## Fork the repository.
 
-Create a new branch: git checkout -b feature/improvement
-Make your changes and commit them: git commit -m 'Add feature/improvement'
-Push to the branch: git push origin feature/improvement
-Submit a pull request.
+- Create a new branch: git checkout -b feature/improvement
+  Make your changes and commit them: git commit -m 'Add feature/improvement'
+- Push to the branch: git push origin feature/improvement
+  Submit a pull request.
 
 ## Contact
 
